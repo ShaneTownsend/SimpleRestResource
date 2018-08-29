@@ -11,14 +11,7 @@ pipeline {
             }
         }
 
-        stage ('Testing Stage') {
-
-            steps {
-                withMaven(maven : 'Maven') {
-                    sh 'mvn test'
-                }
-            }
-        }
+        
         
         stage ('Deploy To Tomcat') {
             steps {
