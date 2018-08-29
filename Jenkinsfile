@@ -6,7 +6,7 @@ pipeline {
 
             steps {
                 withMaven(maven : 'Maven') {
-                    sh 'mvn clean compile'
+                    sh 'mvn install package'
                 }
             }
         }
@@ -15,7 +15,7 @@ pipeline {
         
         stage ('Deploy To Tomcat') {
             steps {
-                sh 'cp /var/lib/jenkins/workspace/second-maven/target/rest-hateoas-0.0.1-SNAPSHOT.war apache-tomcat-8.5.32/webapps/'
+                sh 'cp /var/lib/jenkins/workspace/second-maven/target/rest-hateoas-0.0.1-SNAPSHOT.war /home/ec2-user/apache-tomcat-8.5.32/webapps/'
             }    
         }
         
