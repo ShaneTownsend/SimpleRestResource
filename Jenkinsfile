@@ -31,7 +31,7 @@ pipeline {
             }
         }    
         
-        stage ('Package Stage') {
+        stage ('RenameWar Stage') {
 
             steps {
                 sh 'mv /var/lib/jenkins/workspace/first-pipeline/target/rest-hateoas-0.0.1-SNAPSHOT.war /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.war'
