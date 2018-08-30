@@ -11,7 +11,7 @@ pipeline {
             }
         }
 
-        stages {
+        
         stage ('Test Stage') {
 
             steps {
@@ -21,7 +21,7 @@ pipeline {
             }
         }
             
-        stages {
+        
         stage ('Package Stage') {
 
             steps {
