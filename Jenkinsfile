@@ -6,11 +6,30 @@ pipeline {
 
             steps {
                 withMaven(maven : 'Maven') {
-                    sh 'mvn install package'
+                    sh 'mvn compile'
                 }
             }
         }
 
+        stages {
+        stage ('Test Stage') {
+
+            steps {
+                withMaven(maven : 'Maven') {
+                    sh 'mvn test'
+                }
+            }
+        }
+            
+        stages {
+        stage ('Package Stage') {
+
+            steps {
+                withMaven(maven : 'Maven') {
+                    sh 'mvn package'
+                }
+            }
+        }    
         
         
         stage ('Deploy To Tomcat') {
