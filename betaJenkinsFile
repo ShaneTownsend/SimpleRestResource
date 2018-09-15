@@ -42,7 +42,7 @@ pipeline {
        stage ('Copy to S3 Repository') {
 
            steps {
-                sh 'aws s3 cp /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.war  s3://sha-buck-01/maven/02/'
+                sh 'aws s3 cp /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.war  s3://sha-buck-01/$(JOB_NAME)/$(BUILD_NUMBER)/'
             }
         }   
         
