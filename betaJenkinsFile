@@ -42,8 +42,8 @@ pipeline {
        stage ('Deploy to S3 Repository Stage') {
 
            steps {
-                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                sh 'aws s3 cp /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.war  s3://sha-buck-01/${env.JOB_NAME}/${env.BUILD_ID}/'
+                echo "Running job number= ${env.JOB_NAME} build id= ${env.BUILD_ID}"
+                sh 'aws s3 cp /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.war  s3://sha-buck-01/(${env.JOB_NAME})/(${env.BUILD_ID})/'
             }
         }   
         
