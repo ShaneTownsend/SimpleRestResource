@@ -1,6 +1,9 @@
 
 pipeline {
     agent any
+    environment {
+        def pathVariable = "s3://sha-buck-01/${env.JOB_NAME}/${env.BUILD_ID}/"
+    }
 
     stages {
         stage ('Compile Stage') {
@@ -41,10 +44,9 @@ pipeline {
         
        stage ('Deploy to S3 Repository Stage') {
 
-           steps {
-                def pathVariable = "s3://sha-buck-01/${env.JOB_NAME}/${env.BUILD_ID}/"
+           steps { 
                 echo "path name=${pathVariable}"
-                sh 'aws s3 cp /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.war  s3://sha-buck-01/${env.JOB_NAME}/'
+                sh 'aws s3 cp /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.war  ${pathVariable}'
             }
         }   
         
