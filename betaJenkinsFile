@@ -59,7 +59,7 @@ pipeline {
                     echo "Deploy To Tomcat Stage ..."
                     sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.war ec2-user@ec2-34-244-40-102.eu-west-1.compute.amazonaws.com:/home/ec2-user/'
                     sh 'whoami' 
-                    sh 'sudo cp ec2-user@ec2-34-244-40-102.eu-west-1.compute.amazonaws.com:/home/ec2-user/simple-rest.war ec2-user@ec2-34-244-40-102.eu-west-1.compute.amazonaws.com:/home/ec2-user/apache-tomcat-8.5.34/webapps/'
+                    sh 'sudo scp ec2-user@ec2-34-244-40-102.eu-west-1.compute.amazonaws.com:/home/ec2-user/simple-rest.war ec2-user@ec2-34-244-40-102.eu-west-1.compute.amazonaws.com:/home/ec2-user/apache-tomcat-8.5.34/webapps/'
                 }
             }    
         }
