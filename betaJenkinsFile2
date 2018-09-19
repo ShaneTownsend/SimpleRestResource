@@ -5,6 +5,18 @@ pipeline {
     }
 
     stages {
+        stage('Job Started notification') {
+            steps {
+                echo "Job Started notification ..."   
+                emailext ( 
+                    subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
+                    body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+                    <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""",
+                    recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+                )
+            }
+        }
+    
         stage ('Compile Stage') {
 
             steps {
@@ -68,6 +80,12 @@ pipeline {
         }  
         success {  
             echo 'This will run only if successful'  
+            emailext (
+                subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+                <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""",
+                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+            )
         }  
         failure {  
             echo 'This will run only if failure - usually a red status'     
