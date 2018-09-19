@@ -1,0 +1,85 @@
+pipeline {
+    agent any
+    environment {
+        def pathVariable = "s3://sha-buck-01/${env.JOB_NAME}/${env.BUILD_ID}/"
+    }
+
+    stages {
+        stage ('Compile Stage') {
+
+            steps {
+                withMaven(maven : 'Maven') {
+                    echo "Compile Stage ..."
+                    sh 'mvn compile'
+                }
+            }
+        }
+
+        
+        stage ('Test Stage') {
+
+            steps {
+                withMaven(maven : 'Maven') {
+                    sh 'mvn test'
+                }
+            }
+        }
+            
+        
+        stage ('Package Stage') {
+
+            steps {
+                withMaven(maven : 'Maven') {
+                    echo "Package Stage ..."
+                    sh 'mvn package'
+                }
+            }
+        }   
+        
+        stage('SonarQube Analysis Stage') {
+            steps {
+                echo "SonarQube Analysis Stage ..."   
+            }
+        }
+        
+        stage('Quality Gate Stage') {
+            steps {
+                echo "Quality Gate Stage ..."   
+            }
+        }
+        
+        stage ('Integration Testing Stage') {
+
+            steps {                
+                echo "Integration Testing Stage ..."
+            }
+        }   
+        
+        stage ('Email Notification Stage') {
+
+            steps {                
+                echo "Email Notification Stage ..."
+            }
+        }   
+        
+        post {  
+            always {  
+                echo 'This will always run'  
+            }  
+            success {  
+                echo 'This will run only if successful'  
+            }  
+            failure {  
+                echo 'This will run only if failure - usually a red status'     
+            }  
+            unstable {  
+                echo 'This will run only if the run was marked as unstable - usually a yellow status'  
+            }  
+            changed {  
+                echo 'This will run only if the state of the Pipeline has changed'  
+                echo 'For example, if the Pipeline was previously failing but is now successful'  
+            }  
+     }  
+        
+    }
+}
