@@ -47,31 +47,29 @@ pipeline {
             }
         }   
         
-        stage('SonarQube Analysis Stage') {
-            steps {
-                echo "SonarQube Analysis Stage ..."   
-            }
-        }
+        //stage('SonarQube Analysis Stage') {
+        //    steps {
+        //        echo "SonarQube Analysis Stage ..."   
+        //    }
+        //}
         
-        stage('Quality Gate Stage') {
-            steps {
-                echo "Quality Gate Stage ..."   
-            }
-        }
+        //stage('Quality Gate Stage') {
+        //    steps {
+        //        echo "Quality Gate Stage ..."   
+        //    }
+        //}
         
-        stage ('Integration Testing Stage') {
-
-            steps {                
-                echo "Integration Testing Stage ..."
-            }
-        }   
+        //stage ('Integration Testing Stage') {
+        //    steps {                
+        //        echo "Integration Testing Stage ..."
+        //    }
+        //}   
         
-        stage ('Email Notification Stage') {
-
-            steps {                
-                echo "Email Notification Stage ..."
-            }
-        }     
+        //stage ('Email Notification Stage') {
+        //    steps {                
+        //        echo "Email Notification Stage ..."
+        //    }
+        //}     
     }
     post {
         always {  
