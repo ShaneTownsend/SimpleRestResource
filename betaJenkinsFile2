@@ -101,15 +101,27 @@ pipeline {
         }  
         success {  
             echo 'This will run only if successful'  
-            emailext (
-                subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-                <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-            )
+            script {
+                emailext (
+                    mimeType: 'text/html',
+                    to:"shanetownsend24@hotmail.com",
+                    subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                    body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+                    <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>"""
+                )
+            }        
         }  
         failure {  
-            echo 'This will run only if failure - usually a red status'     
+            echo 'This will run only if failure - usually a red status'   
+            script {
+                emailext (
+                    mimeType: 'text/html',
+                    to:"shanetownsend24@hotmail.com",
+                    subject: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                    body: """<p>FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+                    <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>"""
+                )
+            } 
         }  
         unstable {  
             echo 'This will run only if the run was marked as unstable - usually a yellow status'  
