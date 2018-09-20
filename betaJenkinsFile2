@@ -79,14 +79,14 @@ pipeline {
             }
         }   
         
-        stage ('Deploy To Tomcat Server Stage') {
-            steps {
+        // stage ('Deploy To Tomcat Server Stage') {
+            // steps {
                 // sshagent(['tomcat-dev']) {
                     // echo "Deploy To Tomcat Server Stage ..."
                     // sh 'scp -v -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.war ec2-user@ec2-34-251-146-237.eu-west-1.compute.amazonaws.com:/home/ec2-user/apache-tomcat-8.5.34/webapps/' 
-                //}
-            }    
-        } 
+                // }
+            // }    
+        // } 
         
         stage ('Integration Testing Stage') {
             steps {                
