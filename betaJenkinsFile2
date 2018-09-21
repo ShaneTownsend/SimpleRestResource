@@ -90,6 +90,12 @@ pipeline {
         
         stage ('Integration Testing Stage') {
             steps {                
+                // 1)  Create postman collection and associate postman environment variables	
+                // 2)  Copy the postman collection JSON and the postman environment variables to this Linux server. Use PSCP to transfer these files successfully. 
+                // 3)	Install node.js on this Linux server. 
+                // 4)	Install Newman on this Linux server.
+                // 5)	Test run the collection which also references the environment variables on the command line.   
+                // 6)	Within this Jenkins File execute a script to run the collection which also references the environment variables.   
                 echo "Integration Testing Stage ..."
             }
         }   
@@ -125,10 +131,17 @@ pipeline {
         }  
         unstable {  
             echo 'This will run only if the run was marked as unstable - usually a yellow status'  
+            echo 'This will run only if failure - usually a red status'   
+            script {
+                emailext (
+                    mimeType: 'text/html',
+                    to:"shanetownsend24@hotmail.com",
+                    subject: "UNSTABLE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                    body: """<p>UNSTABLE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+                    <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>"""
+                )
+            } 
         }  
-        changed {  
-            echo 'This will run only if the state of the Pipeline has changed'  
-            echo 'For example, if the Pipeline was previously failing but is now successful'  
-        }  
+         
     }
 }
