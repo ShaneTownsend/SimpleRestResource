@@ -90,13 +90,14 @@ pipeline {
         
         stage ('Integration Testing Stage') {
             steps {                
-                // 1)  Create postman collection and associate postman environment variables	
-                // 2)  Copy the postman collection JSON and the postman environment variables to this Linux server. Use PSCP to transfer these files successfully. 
-                // 3)	Install node.js on this Linux server. 
-                // 4)	Install Newman on this Linux server.
-                // 5)	Test run the collection which also references the environment variables on the command line.   
+                // 1)   Create postman collection and associate postman environment variables	
+                // 2)   Copy the postman collection JSON and the postman environment variables to this Linux server. Use PSCP to transfer these files successfully. 
+                // 3)	Install Docker. 
+                // 4)	Pull Docker Newman image.
+                // 5)	Test run (Docker run on the image) the collection which also references the environment variables on the command line.   
                 // 6)	Within this Jenkins File execute a script to run the collection which also references the environment variables.   
                 echo "Integration Testing Stage ..."
+                sh 'docker run -t postman/newman_ubuntu1404 run "https://www.getpostman.com/collections/8a0c9bc08f062d12dcda"'
             }
         }   
         
