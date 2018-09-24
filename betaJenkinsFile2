@@ -98,7 +98,7 @@ pipeline {
                 // 6)	Within this Jenkins File execute a script to run the collection which also references the environment variables.   
                 echo "Integration Testing Stage ..."
                 sh 'whoami'
-                sh 'docker run -t postman/newman_ubuntu1404 run "https://github.com/ShaneTownsend/SimpleRestResource/blob/master/Simple-Rest-Service-Tests.postman_collection" --disable-unicode'
+                sh 'docker run -t postman/newman_ubuntu1404 run "https://github.com/ShaneTownsend/SimpleRestResource/blob/master/Simple-Rest-Service-Tests.postman_collection.json" --disable-unicode'
             }
         }   
         
