@@ -1,25 +1,25 @@
 {
 	"info": {
-		"_postman_id": "38adf808-88ac-4753-95f4-b364327db1f9",
-		"name": "Simple-Rest-Service-Tests",
+		"_postman_id": "0cfda84a-faae-42d5-8fa1-aa64b1de2172",
+		"name": "AWS-Simple-REST",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "hateous-simplerest-tests",
+			"name": "Standard-Request",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "b139040f-3765-4129-930b-6088d78821bf",
+						"id": "be18a5b6-8f0a-4fba-af87-d6bc9b1a3294",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Check if Peter still exists on the database\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"Peter\");",
+							"    pm.expect(pm.response.text()).to.include(\"David\");",
 							"});",
 							"",
 							"pm.test(\"Check if Same still exists on the database\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"Sam\");",
+							"    pm.expect(pm.response.text()).to.include(\"Shane\");",
 							"});",
 							"",
 							"pm.test(\"Check if response time meets the SLA (less than 200ms)\", function () {",
@@ -43,29 +43,41 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "{{hateous-request}}",
+					"raw": "http://ec2-34-255-214-245.eu-west-1.compute.amazonaws.com:8080/simple-rest/rest/users/all",
+					"protocol": "http",
 					"host": [
-						"{{hateous-request}}"
+						"ec2-34-255-214-245",
+						"eu-west-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"simple-rest",
+						"rest",
+						"users",
+						"all"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "standard-simplerest-tests",
+			"name": "Standard-Request",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "b139040f-3765-4129-930b-6088d78821bf",
+						"id": "be18a5b6-8f0a-4fba-af87-d6bc9b1a3294",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Check if Peter still exists on the database\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"Peter\");",
+							"    pm.expect(pm.response.text()).to.include(\"David\");",
 							"});",
 							"",
 							"pm.test(\"Check if Same still exists on the database\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"Sam\");",
+							"    pm.expect(pm.response.text()).to.include(\"Shane\");",
 							"});",
 							"",
 							"pm.test(\"Check if response time meets the SLA (less than 200ms)\", function () {",
@@ -89,9 +101,21 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "{{standard-request}}",
+					"raw": "http://ec2-34-255-214-245.eu-west-1.compute.amazonaws.com:8080/simple-rest/rest/users/all",
+					"protocol": "http",
 					"host": [
-						"{{standard-request}}"
+						"ec2-34-255-214-245",
+						"eu-west-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"simple-rest",
+						"rest",
+						"users",
+						"all"
 					]
 				}
 			},
