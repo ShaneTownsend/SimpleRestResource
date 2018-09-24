@@ -64,7 +64,7 @@
 			"response": []
 		},
 		{
-			"name": "Standard-Request",
+			"name": "Hateoas-Request",
 			"event": [
 				{
 					"listen": "test",
@@ -101,7 +101,7 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://ec2-34-255-214-245.eu-west-1.compute.amazonaws.com:8080/simple-rest/rest/users/all",
+					"raw": "http://ec2-34-255-214-245.eu-west-1.compute.amazonaws.com:8080/simple-rest/rest/users/hateoas/all",
 					"protocol": "http",
 					"host": [
 						"ec2-34-255-214-245",
@@ -115,6 +115,7 @@
 						"simple-rest",
 						"rest",
 						"users",
+						"hateoas",
 						"all"
 					]
 				}
