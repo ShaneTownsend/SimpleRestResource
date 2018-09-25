@@ -99,10 +99,7 @@ pipeline {
                 echo "Integration Testing Stage ..."
                 sh 'whoami'
                 sh 'docker run -t postman/newman_ubuntu1404 
-                    run "https://raw.githubusercontent.com/ShaneTownsend/SimpleRestResource/master/Simple-Rest-Service-Tests.postman_collection.json" 
-                    --environment "https://raw.githubusercontent.com/ShaneTownsend/SimpleRestResource/master/PostmanEnvironmentConfigurations" 
-                    --disable-unicode 
-                    --color off'
+                    run "https://raw.githubusercontent.com/ShaneTownsend/SimpleRestResource/master/Simple-Rest-Service-Tests.postman_collection.json" --environment "https://raw.githubusercontent.com/ShaneTownsend/SimpleRestResource/master/PostmanEnvironmentConfigurations" --disable-unicode --color off'
             }
         }   
         
