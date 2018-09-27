@@ -89,26 +89,25 @@ pipeline {
         // } 
         
         stage ('Integration Testing Stage') {
-            steps {                
-                // 1)   Create postman collection and associate postman environment variables	
-                // 2)   Copy the postman collection JSON and the postman environment variables to this Linux server. Use PSCP to transfer these files successfully. 
-                // 3)	Install Docker. 
-                // 4)	Pull Docker Newman image.
-                // 5)	Test run (Docker run on the image) the collection which also references the environment variables on the command line.   
-                // 6)	Within this Jenkins File execute a script to run the collection which also references the environment variables.   
+            steps {                   
                 echo "Integration Testing Stage ..."
-                sh 'whoami'
-                https://raw.githubusercontent.com/ShaneTownsend/SimpleRestResource/master/DummyTest
-                sh 'docker run postman/newman_ubuntu1404 run "https://raw.githubusercontent.com/ShaneTownsend/SimpleRestResource/master/DummyTest" --disable-unicode --color off'
-                //sh 'docker run -t postman/newman_ubuntu1404 run "https://www.getpostman.com/collections/8a0c9bc08f062d12dcda" --disable-unicode --color off'
-                //sh 'docker run -t postman/newman_ubuntu1404 run "https://raw.githubusercontent.com/ShaneTownsend/SimpleRestResource/master/Simple-Rest-Service-Tests.postman_collection.json" --environment "https://raw.githubusercontent.com/ShaneTownsend/SimpleRestResource/master/PostmanEnvironmentConfigurations" --disable-unicode --color off'
+                script {
+                    try {
+                        sh 'docker run postman/newman_ubuntu1404 run "https://raw.githubusercontent.com/ShaneTownsend/SimpleRestResource/master/DummyTest" --disable-unicode --color off'
+                        //sh 'docker run -t postman/newman_ubuntu1404 run "https://www.getpostman.com/collections/8a0c9bc08f062d12dcda" --disable-unicode --color off'
+                        //sh 'docker run -t postman/newman_ubuntu1404 run "https://raw.githubusercontent.com/ShaneTownsend/SimpleRestResource/master/Simple-Rest-Service-Tests.postman_collection.json" --environment "https://raw.githubusercontent.com/ShaneTownsend/SimpleRestResource/master/PostmanEnvironmentConfigurations" --disable-unicode --color off'
+                    catch (exc) {
+                        echo 'Testing failed!'
+                        currentBuild.result = 'UNSTABLE'
+                    }
+                }
             }
         }   
         
     }
     post {
         always {  
-            echo 'This will always run'  
+            echo 'This will always run - This is a catch ALL'  
         }  
         success {  
             echo 'This will run only if successful'  
@@ -138,7 +137,6 @@ pipeline {
         }  
         unstable {  
             echo 'This will run only if the run was marked as unstable - usually a yellow status'  
-            echo 'This will run only if failure - usually a red status'   
             script {
                 emailext (
                     mimeType: 'text/html',
