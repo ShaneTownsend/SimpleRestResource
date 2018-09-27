@@ -71,19 +71,21 @@ pipeline {
             }
         }
         
-        stage ('RenameWar Stage') {
+        stage ('Rename Artifacts Stage') {
 
             steps {
-                echo "RenameWar Stage ..."
+                echo "Rename Artifacts Stage ..."
                 sh 'mv /var/lib/jenkins/workspace/first-pipeline/target/rest-hateoas-0.0.1-SNAPSHOT.war /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.war'
+                sh 'mv /var/lib/jenkins/workspace/first-pipeline/target/rest-hateoas-0.0.1-SNAPSHOT.pom /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.pom'
             }
         }   
         
-       stage ('Deploy to S3 Repository Stage') {
+       stage ('Deploy Artifacts to S3 Repository Stage') {
 
            steps { 
                 echo "Deploy to S3 Repository Stage; path name=${pathVariable} ..."
                 sh 'aws s3 cp /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.war  ${pathVariable}'
+                sh 'aws s3 cp /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.pom  ${pathVariable}'
             }
         }   
         
