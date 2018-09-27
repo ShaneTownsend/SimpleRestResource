@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "72e2be1b-c236-4755-8302-9ac616f55f2b",
+		"name": "DummyTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Resource1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "160786fa-6f97-4235-a177-7710bcead3ec",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Check if response time meets the SLA (less than 200ms)\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(50);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://ec2-54-76-148-29.eu-west-1.compute.amazonaws.com:8080/login?from=%2F",
+					"protocol": "http",
+					"host": [
+						"ec2-54-76-148-29",
+						"eu-west-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "%2F"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
