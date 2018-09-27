@@ -11,11 +11,11 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "32d40646-bcd2-4d18-bf1c-96cb2668e3f3",
+						"id": "e537d57f-8a59-499b-b0cb-c9de23be94ab",
 						"type": "text/javascript",
 						"exec": [
-							"pm.test(\"Check if response time meets the SLA (less than 10ms)\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(10);",
+							"pm.test(\"Check if response time meets the SLA (less than 50ms)\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(50);",
 							"});",
 							"",
 							"pm.test(\"Status code is 200\", function () {",
