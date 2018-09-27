@@ -34,7 +34,15 @@ pipeline {
 
             steps {
                 withMaven(maven : 'Maven') {
-                    sh 'mvn test'
+                    script {
+                        try {
+                            sh 'mvn test'
+                        }
+                        catch (exc) {
+                            echo 'Unit Testing failed! - Mark build as unstable'
+                            currentBuild.result = 'UNSTABLE'    
+                        }
+                    }        
                 }
             }
         }
@@ -98,7 +106,7 @@ pipeline {
                         //sh 'docker run -t postman/newman_ubuntu1404 run "https://raw.githubusercontent.com/ShaneTownsend/SimpleRestResource/master/Simple-Rest-Service-Tests.postman_collection.json" --environment "https://raw.githubusercontent.com/ShaneTownsend/SimpleRestResource/master/PostmanEnvironmentConfigurations" --disable-unicode --color off'
                     }
                     catch (exc) {
-                        echo 'Testing failed!'
+                        echo 'Integration Testing failed! - Mark build as unstable'
                         currentBuild.result = 'UNSTABLE'
                     }
                 }
