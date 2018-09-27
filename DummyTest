@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "160786fa-6f97-4235-a177-7710bcead3ec",
+						"id": "32d40646-bcd2-4d18-bf1c-96cb2668e3f3",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Check if response time meets the SLA (less than 200ms)\", function () {",
