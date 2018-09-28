@@ -30,7 +30,7 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://ec2-54-76-148-29.eu-west-1.compute.amazonaws.com:8080/login?from=%2F",
+					"raw": "http://ec2-54-194-151-155.eu-west-1.compute.amazonaws.com:8091/simple-rest/rest/users/hateoas/all",
 					"protocol": "http",
 					"host": [
 						"ec2-54-76-148-29",
