@@ -39,7 +39,7 @@
 						"amazonaws",
 						"com"
 					],
-					"port": "8080",
+					"port": "8091",
 					"path": [
 						"login"
 					],
