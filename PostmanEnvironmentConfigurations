@@ -4,13 +4,13 @@
   "values": [
     {
       "key": "hateous-request",
-      "value": "http://ec2-54-246-253-217.eu-west-1.compute.amazonaws.com:8091/simple-rest/rest/users/hateoas/all",
+      "value": "http://ec2-54-194-151-155.eu-west-1.compute.amazonaws.com:8091/simple-rest/rest/users/hateoas/all",
       "enabled": true,
       "type": "text"
     },
     {
       "key": "standard-request",
-      "value": "http://ec2-54-246-253-217.eu-west-1.compute.amazonaws.com:8091/simple-rest/rest/users/all",
+      "value": "http://ec2-54-194-151-155.eu-west-1.compute.amazonaws.com:8091/simple-rest/rest/users/all",
       "enabled": true,
       "type": "text"
     }
