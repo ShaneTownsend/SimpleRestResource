@@ -75,7 +75,7 @@ pipeline {
 
             steps {
                 echo "Rename Artifacts Stage ..."
-                sh 'mv /var/lib/jenkins/workspace/first-pipeline/target/rest-hateoas-0.0.1-SNAPSHOT /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.war'
+                sh 'mv /var/lib/jenkins/workspace/first-pipeline@2/target/rest-hateoas-0.0.1-SNAPSHOT.war /var/lib/jenkins/workspace/first-pipeline@2/target/simple-rest.war'
             }
         }   
         
@@ -83,8 +83,8 @@ pipeline {
 
            steps { 
                 echo "Deploy to S3 Repository Stage; path name=${pathVariable} ..."
-                sh 'aws s3 cp /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.war  ${pathVariable}'
-                sh 'aws s3 cp /var/lib/jenkins/workspace/first-pipeline/pom.xml  ${pathVariable}'
+                sh 'aws s3 cp /var/lib/jenkins/workspace/first-pipeline@2/target/simple-rest.war  ${pathVariable}'
+                sh 'aws s3 cp /var/lib/jenkins/workspace/first-pipeline@2/pom.xml  ${pathVariable}'
             }
         }   
         
