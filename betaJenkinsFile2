@@ -75,7 +75,7 @@ pipeline {
 
             steps {
                 echo "Rename Artifacts Stage ..."
-                sh 'mv /var/lib/jenkins/workspace/first-pipeline/target/rest-hateoas-0.0.1-SNAPSHOT.war /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.war'
+                sh 'mv /var/lib/jenkins/workspace/first-pipeline/target/rest-hateoas-0.0.1-SNAPSHOT /var/lib/jenkins/workspace/first-pipeline/target/simple-rest.war'
             }
         }   
         
