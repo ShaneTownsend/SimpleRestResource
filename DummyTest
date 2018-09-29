@@ -41,7 +41,7 @@
 					],
 					"port": "8091",
 					"path": [
-						"login"
+						"simple-rest/rest/users/hateoas/all"
 					],
 					"query": [
 						{
