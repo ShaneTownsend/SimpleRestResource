@@ -1,1 +1,56 @@
-
+{
+	"info": {
+		"_postman_id": "0483e696-5812-4938-9777-a1e20acdb715",
+		"name": "FirstTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Request 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bf5f7952-69b2-4d63-8374-066846d29120",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Shane\");",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://ec2-54-194-151-155.eu-west-1.compute.amazonaws.com:8091/simple-rest/rest/users/hateoas/all",
+					"protocol": "http",
+					"host": [
+						"ec2-54-194-151-155",
+						"eu-west-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "8091",
+					"path": [
+						"simple-rest",
+						"rest",
+						"users",
+						"hateoas",
+						"all"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
