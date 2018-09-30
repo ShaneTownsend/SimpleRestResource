@@ -1,39 +1,40 @@
 {
 	"info": {
-		"_postman_id": "38adf808-88ac-4753-95f4-b364327db1f9",
-		"name": "Simple-Rest-Service-Tests",
+		"_postman_id": "0483e696-5812-4938-9777-a1e20acdb715",
+		"name": "FirstTest",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "hateous-simplerest-tests",
+			"name": "hateoas-request",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "b139040f-3765-4129-930b-6088d78821bf",
+						"id": "1754f665-5ac2-46b5-80b9-5b39eae90636",
 						"type": "text/javascript",
 						"exec": [
-							"pm.test(\"Check if David still exists on the database\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"David\");",
-							"});",
-							"",
-							"pm.test(\"Check if Shane still exists on the database\", function () {",
+							"pm.test(\"Body matches string\", function () {",
 							"    pm.expect(pm.response.text()).to.include(\"Shane\");",
 							"});",
 							"",
-							"pm.test(\"Check if response time meets the SLA (less than 200ms)\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"David\");",
 							"});",
 							"",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
 							"",
 							"pm.test(\"Content-Type is present\", function () {",
 							"    pm.response.to.have.header(\"Content-Type\");",
-							"});"
+							"});",
+							"",
+							""
 						]
 					}
 				}
@@ -43,43 +44,44 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "{{hateous-request}}",
+					"raw": "{{hateoas-request}}",
 					"host": [
-						"{{hateous-request}}"
+						"{{hateoas-request}}"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "standard-simplerest-tests",
+			"name": "standard-request",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "b139040f-3765-4129-930b-6088d78821bf",
+						"id": "1754f665-5ac2-46b5-80b9-5b39eae90636",
 						"type": "text/javascript",
 						"exec": [
-							"pm.test(\"Check if David still exists on the database\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"David\");",
-							"});",
-							"",
-							"pm.test(\"Check if Shane still exists on the database\", function () {",
+							"pm.test(\"Body matches string\", function () {",
 							"    pm.expect(pm.response.text()).to.include(\"Shane\");",
 							"});",
 							"",
-							"pm.test(\"Check if response time meets the SLA (less than 200ms)\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"David\");",
 							"});",
 							"",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
 							"",
 							"pm.test(\"Content-Type is present\", function () {",
 							"    pm.response.to.have.header(\"Content-Type\");",
-							"});"
+							"});",
+							"",
+							""
 						]
 					}
 				}
