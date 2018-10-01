@@ -19,7 +19,7 @@ public class UsersResource {
     @GetMapping("/all")
     public List<Users> getAll() {
         Users users1 = getUser();
-        Users users2 = new Users("Sam", 2400L);
+        Users users2 = new Users("Shane", 2400L);
         return Arrays.asList(users1, users2);
     }
 
